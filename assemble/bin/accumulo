@@ -68,6 +68,7 @@ function main() {
     CLASSPATH="$CLASSPATH" "$@" "$jShellPath" 
     exit 0
 
+<<<<<<< HEAD
   elif [[ $cmd == "jshell" ]] && [[ "$#" -ne 1 ]]; then
     cmdArr=( "$@" )
     # Traverse through user bash command and verify -startup argument exists
@@ -82,6 +83,19 @@ function main() {
     exit 0
   fi
   
+=======
+  # Start up JShell with Accumulo
+  local jShellPath="$conf/jshell-init.jsh"
+  if [[ $cmd == "jshell" ]]; then
+    shift
+    if [[ -f "$jShellPath" ]]; then
+      exec "$cmd" --startup DEFAULT --startup "$jShellPath" "$@"
+    else
+      exec "$cmd" "$@"
+    fi
+  fi
+
+>>>>>>> upstream/main
   if [[ -x "$JAVA_HOME/bin/java" ]]; then
     JAVA="$JAVA_HOME/bin/java"
   else

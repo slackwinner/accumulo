@@ -67,23 +67,7 @@ function main() {
     # Load in default Accumulo APIs into JShell
     CLASSPATH="$CLASSPATH" "$@" "$jShellPath" 
     exit 0
-
-<<<<<<< HEAD
-  elif [[ $cmd == "jshell" ]] && [[ "$#" -ne 1 ]]; then
-    cmdArr=( "$@" )
-    # Traverse through user bash command and verify -startup argument exists
-    for arg in "${!cmdArr[@]}"; do
-       if [[ "${cmdArr[arg]}" =~ "-startup" ]]; then
-         # Insert "DEFAULT" JShell script after -startup argument
-         cmdArr=( "${cmdArr[@]:0:arg}" "DEFAULT" "${cmdArr[@]:arg+1}" )
-       fi
-    done
-    # Load in default java libraries first followed by custom file(s)
-    CLASSPATH="$CLASSPATH" "${cmdArr[@]}"
-    exit 0
-  fi
-  
-=======
+    
   # Start up JShell with Accumulo
   local jShellPath="$conf/jshell-init.jsh"
   if [[ $cmd == "jshell" ]]; then
@@ -94,8 +78,7 @@ function main() {
       exec "$cmd" "$@"
     fi
   fi
-
->>>>>>> upstream/main
+  
   if [[ -x "$JAVA_HOME/bin/java" ]]; then
     JAVA="$JAVA_HOME/bin/java"
   else

@@ -510,11 +510,7 @@
             </goals>
             <phase>compile</phase>
             <configuration>
-<<<<<<< HEAD
-              <executable>${basedir}/conf/create-jshell.sh</executable>
-=======
               <executable>src/main/scripts/create-jshell.sh</executable>
->>>>>>> upstream/main
             </configuration>
           </execution>
         </executions>
